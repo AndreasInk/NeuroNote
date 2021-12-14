@@ -1,0 +1,19 @@
+.main {
+    text-align: center;
+    padding: 1%;
+    width: 100%;
+  }
+  .choice {
+      padding: 1%;
+      width: 100%;
+  }
+
+  .question {
+    padding: 1%;
+    width: 100%;
+}
+.confetti {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
