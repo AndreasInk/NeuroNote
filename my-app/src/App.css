@@ -23,7 +23,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.TextField {
+  padding: 1%;
+  margin: auto;
+  margin-top: 10%;
+}
 .App-link {
   color: #61dafb;
 }

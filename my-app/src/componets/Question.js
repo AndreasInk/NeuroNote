@@ -9,18 +9,20 @@ import Confetti from 'react-confetti'
 function Question(props) {
  const [questions, setQuestions] =  useState(props.questions);
  const [currentQIndex, setCurrentQIndex] =  useState(0);
- const [showCorrect, setShowCorrect] =  useState(false);
 
+ const [picked, setPicked] =  useState(null);
+ 
 
  function handleCorrect(selected) {
 console.log(selected);
-setShowCorrect(selected == questions[currentQIndex].correct) 
+setPicked(selected);
+
 
  }
   return (
     
     <div className='main'>
-{showCorrect &&
+{picked &&
         <div className='confetti'>
          <Confetti
         
@@ -31,12 +33,16 @@ setShowCorrect(selected == questions[currentQIndex].correct)
      <h1 class='question'>{questions[currentQIndex].question}</h1>
       {questions[currentQIndex].choices.map((value, index) => 
       <div className='choice'>
-        <Button onClick={() => {handleCorrect(value)}} style={{width:"85%"}}variant="outlined">{value}</Button>
+        <Button onClick={() => {handleCorrect(value)}} style={{width:"85%", color: picked  ? questions[currentQIndex].correct == value  ? "green" : "red" : "" }} color= {picked ? questions[currentQIndex].correct == value ? "success" :  "error" : "primary" }variant="outlined">{value}</Button>
         </div>
       )}
    
         
-     
+   {picked &&
+        <div className='confetti'>
+        <h1 class='question'> {questions[currentQIndex].correct == picked  ? "Great " + questions[currentQIndex].correct + " was correct!" : picked + " was incorrect, you got the next one!"}</h1>
+      </div>
+     }
     </div>
   );
 }
